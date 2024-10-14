@@ -1,11 +1,9 @@
 // src/AppwriteConfig.js
-import { Client, Databases} from "appwrite";
+import { Client, Databases } from "appwrite";
 
 const client = new Client();
 client
-  .setEndpoint("https://cloud.appwrite.io/v1") // Your Appwrite endpoint
-  .setProject("670c26f8001a1521acfd");     // Your project ID from Appwrite
+  .setEndpoint(process.env.REACT_APP_APPWRITE_ENDPOINT) // Appwrite endpoint from .env
+  .setProject(process.env.REACT_APP_APPWRITE_PROJECT_ID); // Project ID from .env
 
 export const databases = new Databases(client);
-
-// 670c26f8001a1521acfd
