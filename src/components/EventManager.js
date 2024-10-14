@@ -7,17 +7,20 @@ const EventManager = () => {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
     name: "",
-    date: "",
-    location: "",
     description: "",
+    organizer: "",
+    category: "",
+    location: "",
+    date: "",
+    startTime: "",
+    endTime: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState("");
   const [showCreateForm, setShowCreateForm] = useState(true);
-  const [message, setMessage] = useState({ text: "", type: "" }); // Message state
+  const [message, setMessage] = useState({ text: "", type: "" });
 
-  // Fetch all events from the Appwrite database
   const fetchEvents = async () => {
     try {
       const response = await databases.listDocuments("event_DB", "events_DB");
@@ -35,7 +38,7 @@ const EventManager = () => {
 
   const showMessage = (text, type) => {
     setMessage({ text, type });
-    setTimeout(() => setMessage({ text: "", type: "" }), 3000); // Hide after 3 seconds
+    setTimeout(() => setMessage({ text: "", type: "" }), 3000);
   };
 
   const addEvent = async (e) => {
@@ -43,7 +46,16 @@ const EventManager = () => {
     try {
       await databases.createDocument("event_DB", "events_DB", "unique()", newEvent);
       fetchEvents();
-      setNewEvent({ name: "", date: "", location: "", description: "" });
+      setNewEvent({
+        name: "",
+        description: "",
+        organizer: "",
+        category: "",
+        location: "",
+        date: "",
+        startTime: "",
+        endTime: "",
+      });
       showMessage("Event added successfully!", "success");
     } catch (error) {
       console.error("Error adding event:", error.message);
@@ -57,7 +69,6 @@ const EventManager = () => {
       await databases.updateDocument("event_DB", "events_DB", editId, newEvent);
       fetchEvents();
       setIsEditing(false);
-      setNewEvent({ name: "", date: "", location: "", description: "" });
       showMessage("Event updated successfully!", "success");
     } catch (error) {
       console.error("Error updating event:", error.message);
@@ -79,13 +90,7 @@ const EventManager = () => {
   const startEdit = (event) => {
     setIsEditing(true);
     setEditId(event.$id);
-    setNewEvent({
-      name: event.name,
-      date: event.date,
-      location: event.location,
-      description: event.description,
-    });
-    setShowCreateForm(true);
+    setNewEvent(event);
   };
 
   useEffect(() => {
@@ -99,66 +104,39 @@ const EventManager = () => {
         <button onClick={() => setShowCreateForm(false)}>Show Events</button>
       </nav>
 
-      {/* Display Messages */}
-      {message.text && (
-        <div className={`message ${message.type}`}>
-          {message.text}
-        </div>
-      )}
+      {message.text && <div className={`message ${message.type}`}>{message.text}</div>}
 
       {showCreateForm ? (
-        <div className="form-container">
-          <h1>{isEditing ? "Update Event" : "Create Event"}</h1>
-          <form onSubmit={isEditing ? updateEvent : addEvent}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Event Name"
-              value={newEvent.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              value={newEvent.date}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="location"
-              placeholder="Location"
-              value={newEvent.location}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="description"
-              placeholder="Description"
-              value={newEvent.description}
-              onChange={handleInputChange}
-              required
-            />
-            <button type="submit">{isEditing ? "Update Event" : "Add Event"}</button>
-          </form>
-        </div>
+        <form onSubmit={isEditing ? updateEvent : addEvent}>
+          <input type="text" name="name" placeholder="Event Name" value={newEvent.name} onChange={handleInputChange} required />
+          <textarea name="description" placeholder="Description" value={newEvent.description} onChange={handleInputChange} required />
+          <input type="text" name="organizer" placeholder="Organizer" value={newEvent.organizer} onChange={handleInputChange} required />
+          <input type="text" name="category" placeholder="Category" value={newEvent.category} onChange={handleInputChange} required />
+          <input type="text" name="location" placeholder="Location" value={newEvent.location} onChange={handleInputChange} required />
+          <input type="date" name="date" value={newEvent.date} onChange={handleInputChange} required />
+          <input type="time" name="startTime" value={newEvent.startTime} onChange={handleInputChange} required />
+          <input type="time" name="endTime" value={newEvent.endTime} onChange={handleInputChange} required />
+          <button type="submit">{isEditing ? "Update Event" : "Add Event"}</button>
+        </form>
       ) : (
-        <div className="event-list">
-          <h1>Events List</h1>
-          <ul>
-            {events.map((event) => (
-              <li key={event.$id}>
-                <h2>{event.name}</h2>
-                <p>{new Date(event.date).toLocaleDateString()}</p>
-                <p>{event.location}</p>
-                <p>{event.description}</p>
-                <button onClick={() => startEdit(event)}>Edit</button>
-                <button onClick={() => deleteEvent(event.$id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul>
+          {events.map((event) => (
+            <li key={event.$id}>
+              <h2>{event.name}</h2>
+              <p>{event.description}</p>
+              <p>Organizer: {event.organizer}</p>
+              <p>Category: {event.category}</p>
+              <p>Location: {event.location}</p>
+              <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+              <p>
+                Time: {event.startTime} - {event.endTime}
+              </p>
+              
+              <button onClick={() => startEdit(event)}>Edit</button>
+              <button onClick={() => deleteEvent(event.$id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
