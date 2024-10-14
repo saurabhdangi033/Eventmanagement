@@ -1,175 +1,184 @@
-/* EventManager.css */
-
-/* General Styles */
+/* General Styling */
 body {
-    background-color: #000000;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  /* Container Styling */
-  div {
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-    background-color: #13052e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 30px;
-    overflow: auto;
-  }
-  
-  /* Heading Styling */
-  h1 {
-    color: #ffffff;
-    margin-bottom: 20px;
-    font-size: 2.2rem;
-  }
-  
-  /* Form Styling */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
-  }
-  
-  input,
-  textarea,
-  button {
-    padding: 12px 15px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    outline: none;
-    transition: all 0.3s ease;
-  }
-  
-  /* Input Focus Effect */
-  input:focus,
-  textarea:focus {
-    border-color: #4a90e2;
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
-  }
-  
-  /* Button Styling */
-  button {
-    cursor: pointer;
-    background-color: #08213e;
-    color: white;
-    border: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #357abd;
-  }
-  
-  /* Event List Styling */
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: #f1f3f6;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    position: relative;
-    transition: transform 0.2s ease;
-  }
-  
-  li:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Event Content Styling */
-  h2 {
-    color: #333;
-    margin: 0;
-  }
-  
-  p {
-    margin: 5px 0;
-    color: #380404;
-  }
-  
-  button {
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-  
-  /* Edit/Delete Button Styling */
-  button:first-child {
-    background-color: #fbc02d;
-  }
-  
-  button:first-child:hover {
-    background-color: #ffa000;
-  }
-  
-  button:last-child {
-    background-color: #ce1111;
-  }
-  
-  button:last-child:hover {
-    background-color: #f44336;
-  }
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .navbar button {
-    background-color: #0855ae;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .navbar button:hover {
-    background-color: #062747;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #05363c;
+}
+
+/* Container */
+.event-manager-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1bd70a;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.navbar button {
+  background-color: #ffffff;
+  color: #4a90e2;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #4a90e2;
+  color: #ffffff;
+}
+
+/* Message Styling */
+.message {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.message.success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.message.error {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Form Styling */
+form {
+  display: grid;
+  gap: 15px;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0px 0px 8px rgba(74, 144, 226, 0.5);
+}
+
+button[type="submit"] {
+  background-color: #03101f;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #357ab7;
+}
+
+/* Event List Styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: scale(1.02);
+}
+
+li h2 {
+  margin: 0 0 10px;
+  color: #4a90e2;
+}
+
+li p {
+  margin: 5px 0;
+  color: #555;
+}
+
+li button {
+  margin-right: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+li button:hover {
+  background-color: #388e3c;
+}
+
+li button:nth-child(2) {
+  background-color: #f44336;
+}
+
+li button:nth-child(2):hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .event-manager-container {
-    width: 90%;
-    max-width: 800px;
-    background-color: #cb6811;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 30px;
+    margin: 20px;
+    padding: 15px;
   }
 
-  .message {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .message.success {
-    background-color: #4caf50;
-    color: white;
+
+  form {
+    padding: 15px;
   }
-  
-  .message.error {
-    background-color: #f44336;
-    color: white;
+
+  input, textarea {
+    font-size: 14px;
   }
+
+  button {
+    width: 100%;
+  }
+
+  ul {
+    padding: 0;
+  }
+}

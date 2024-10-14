@@ -1,0 +1,60 @@
+.create-event-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #020c1c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-event-container h2 {
+    text-align: center;
+    color: #f8eeee;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+  }
+  .notification {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    animation: fadeOut 3s forwards;
+  }
+  .create-event-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .create-event-container input,
+  .create-event-container textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .create-event-container input:focus,
+  .create-event-container textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+  }
+  
+  .create-event-container button {
+    background-color: #1651da;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-event-container button:hover {
+    background-color: #357abd;
+  }
+  
