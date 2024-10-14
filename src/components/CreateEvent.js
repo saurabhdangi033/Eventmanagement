@@ -8,7 +8,6 @@ const CreateEvent = () => {
     date: "",
     location: "",
     description: "",
-    organizer: "", // New field for organizer
   });
 
   const [message, setMessage] = useState(""); // Message state for notifications
@@ -22,7 +21,7 @@ const CreateEvent = () => {
     e.preventDefault();
     try {
       await databases.createDocument("event_DB", "events_DB", "unique()", newEvent);
-      setNewEvent({ name: "", date: "", location: "", description: "", organizer: "" }); // Reset form including organizer
+      setNewEvent({ name: "", date: "", location: "", description: "" });
       setMessage("Event created successfully!"); // Success message
     } catch (error) {
       console.error("Error adding event:", error.message);
@@ -68,14 +67,6 @@ const CreateEvent = () => {
           name="description"
           placeholder="Description"
           value={newEvent.description}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type="text"
-          name="organizer"
-          placeholder="Organizer Name" // New input for organizer
-          value={newEvent.organizer}
           onChange={handleInputChange}
           required
         />
