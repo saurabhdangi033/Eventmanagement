@@ -11,6 +11,7 @@ const ShowEvents = () => {
     date: "",
     location: "",
     description: "",
+    organizer: "", // New field for organizer
   });
   const [message, setMessage] = useState(""); // Store success/error messages
 
@@ -39,6 +40,7 @@ const ShowEvents = () => {
       date: event.date,
       location: event.location,
       description: event.description,
+      organizer: event.organizer, // Get organizer for editing
     });
   };
 
@@ -69,7 +71,7 @@ const ShowEvents = () => {
 
   // Reset Form and Messages
   const resetForm = () => {
-    setEventData({ name: "", date: "", location: "", description: "" });
+    setEventData({ name: "", date: "", location: "", description: "", organizer: "" });
     setEditId("");
     setIsEditing(false);
     setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
@@ -119,6 +121,14 @@ const ShowEvents = () => {
             onChange={handleInputChange}
             required
           />
+          <input
+            type="text"
+            name="organizer"
+            placeholder="Organizer Name" // New input for organizer
+            value={eventData.organizer}
+            onChange={handleInputChange}
+            required
+          />
           <button type="submit">Update Event</button>
           <button type="button" onClick={resetForm}>Cancel</button>
         </form>
@@ -132,6 +142,7 @@ const ShowEvents = () => {
             <p>{new Date(event.date).toLocaleDateString()}</p>
             <p>{event.location}</p>
             <p>{event.description}</p>
+            <p><strong>Organizer:</strong> {event.organizer}</p> {/* Display organizer */}
             <div className="button-group">
               <button onClick={() => startEdit(event)}>Edit</button>
               <button onClick={() => deleteEvent(event.$id)}>Delete</button>
