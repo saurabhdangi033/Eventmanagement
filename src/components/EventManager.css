@@ -1,0 +1,175 @@
+/* EventManager.css */
+
+/* General Styles */
+body {
+    background-color: #000000;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container Styling */
+  div {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    background-color: #13052e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    overflow: auto;
+  }
+  
+  /* Heading Styling */
+  h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  
+  input,
+  textarea,
+  button {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* Input Focus Effect */
+  input:focus,
+  textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  }
+  
+  /* Button Styling */
+  button {
+    cursor: pointer;
+    background-color: #08213e;
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #357abd;
+  }
+  
+  /* Event List Styling */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #f1f3f6;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  
+  li:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Event Content Styling */
+  h2 {
+    color: #333;
+    margin: 0;
+  }
+  
+  p {
+    margin: 5px 0;
+    color: #380404;
+  }
+  
+  button {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  
+  /* Edit/Delete Button Styling */
+  button:first-child {
+    background-color: #fbc02d;
+  }
+  
+  button:first-child:hover {
+    background-color: #ffa000;
+  }
+  
+  button:last-child {
+    background-color: #ce1111;
+  }
+  
+  button:last-child:hover {
+    background-color: #f44336;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .navbar button {
+    background-color: #0855ae;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .navbar button:hover {
+    background-color: #062747;
+  }
+  
+  .event-manager-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #cb6811;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+  }
+
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .message.success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .message.error {
+    background-color: #f44336;
+    color: white;
+  }
